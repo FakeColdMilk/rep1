@@ -1,4 +1,6 @@
 import Card from '../../components/Card';
+import Counter from '../../components/Counter';
+import GameList from '../../components/GameList';
 
 
 type Post = {
@@ -18,13 +20,25 @@ const posts: Post[] = await res.json();
 return (
 <section>
 <h1>Välkommen</h1>
-<p>Här visas 3 inlägg från jsonplaceholder.typicode.com</p>
 
 
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '1rem' }}>
+<div>
+<Counter />
+<div style={{ height: '1rem' }} />
+<GameList />
+</div>
+
+
+<div>
+<h2>Senaste inlägg</h2>
 <div style={{ display: 'grid', gap: '1rem', marginTop: '1rem' }}>
 {posts.map((post) => (
 <Card key={post.id} title={post.title} description={post.body} />
 ))}
+</div>
+</div>
 </div>
 </section>
 );
